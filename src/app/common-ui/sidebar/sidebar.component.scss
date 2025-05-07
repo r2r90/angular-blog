@@ -1,6 +1,8 @@
 :host {
   display: block;
   padding: 20px 12px;
+  position: relative;
+  background: var(--dark-color);
 }
 
 .main-menu-list {
@@ -38,6 +40,38 @@
   }
 }
 
+.sidebar__footer {
+  position: absolute;
+  width: calc(100% - 20px);
+  bottom: 20px;
+  background: var(--dark-hover-color);
+  border-radius: 2px;
+  padding: 4px 16px;
+  display: grid;
+  grid-template-columns: 32px 1fr 16px;
+  grid-gap: 12px;
+  align-items: center;
+
+  img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+  .username-text {
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .settings-btn {
+    align-items: center;
+    svg {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}
+
 .menu-item svg {
   width: 16px;
   height: 16px;
@@ -60,3 +94,5 @@
   height: 12px;
   color: var(--primary-color);
 }
+
+
