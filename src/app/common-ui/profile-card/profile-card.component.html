@@ -1,0 +1,22 @@
+@if (profile) {
+  <div class="profile-card">
+    <div class="avatar-name">
+      <img [ngSrc]="profile.avatarUrl | imgUrl" width="70" height="70" alt="avatar" class="profile-card__avatar">
+      <div class="profile-card__name">
+        <strong class="h6">{{ profile.firstName }} {{ profile.lastName }}</strong>
+        <span class="subtitle">{{ profile.username }}</span>
+      </div>
+    </div>
+    <div class="profile-card__description">
+      {{ profile.description }}
+    </div>
+    <div class="profile-card__tags">
+      @for (skill of profile.stack; track $index) {
+        <div class="skill-tag">{{ skill }}</div>
+      }
+    </div>
+    <div class="profile-card__action">
+      <button class="btn">Subscribe</button>
+    </div>
+  </div>
+}
