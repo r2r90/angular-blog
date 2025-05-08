@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {SvgIconComponent} from '../svg-icon/svg-icon.component';
-import {AsyncPipe, JsonPipe, NgForOf, NgOptimizedImage} from '@angular/common';
+import {AsyncPipe, NgForOf, NgOptimizedImage} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {SubscriberCardComponent} from '../subscriber-card/subscriber-card.component';
 import {ProfileService} from '../../data/services/profile.service';
@@ -24,7 +24,7 @@ import {ImgUrlPipe} from '../../helpers/pipes/img-url.pipe';
 export class SidebarComponent {
   profileService: ProfileService = inject(ProfileService);
 
-  subscribers$ = this.profileService.getSubscribersShortList()
+  subscribers$ = this.profileService.getSubscribersShortList(3)
   me = this.profileService.me
 
   menuItems = [

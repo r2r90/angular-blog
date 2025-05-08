@@ -2,7 +2,7 @@ import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {IProfile} from '../interfaces/profile.interface';
 import {IPageble} from '../interfaces/pageble.interface';
-import {map, tap} from 'rxjs';
+import {map, Observable, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +27,14 @@ export class ProfileService {
       )
   }
 
-  getSubscribersShortList() {
+  getSubscribersShortList(count:number) {
     return this.http.get<IPageble<IProfile>>(`${this.baseApiUrl}account/subscribers/`)
       .pipe(
-        map(res => res.items.slice(0, 3))
+        map(res => res.items.slice(0, count))
       )
+  }
+
+  getUserById(id: string): Observable<IProfile> {
+    return this.http.get<IProfile>(`${this.baseApiUrl}account/${id}`)
   }
 }
