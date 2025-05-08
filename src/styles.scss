@@ -6,7 +6,8 @@
   --light-color: #FFFFFF;
   --primary-color: #AE7AFF;
   --gray-color: #5F646D;
-  --dark-hover-color: #161616
+  --dark-hover-color: #161616;
+  --light-transparent-color: #FFFFFFBF
 }
 
 *,
@@ -97,6 +98,39 @@ body {
   font-weight: 400;
   line-height: 21px;
   font-family: "JetBrains Mono", sans-serif;
+}
+
+.tt-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+}
+
+tt-form-label__title {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--light-transparent-color);
+}
+
+.tt-form-input {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  border: none;
+  background: none;
+  color: var(--light-color);
+  border-bottom: 1px solid var(--light-color);
+  height: 32px;
+  outline: none;
+}
+
+.tt-textarea {
+  height: 84px;
+  resize: none;
 }
 
 

@@ -17,7 +17,6 @@ export class SearchPageComponent {
 
   constructor() {
     this.profileService.getTestAccounts().subscribe(val => {
-      console.log(val, 'SEARCH PAGE CONSTRUCTOR')
       this.profiles = val
     })
   }

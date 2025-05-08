@@ -2,9 +2,8 @@
 
   <header class="profile-page-header">
     <app-profile-header [profile]="profile">
-
     </app-profile-header>
-    <a class="btn to-setting-btn">
+    <a [routerLink]="['/settings']" class="btn to-setting-btn">
       Edit
       <svg icon="settings" class="to-setting-icon">
       </svg>
@@ -13,7 +12,7 @@
 
   <main class="profile-page__body">
     <app-post-feed></app-post-feed>
-    <div class="">
+    <div>
       <h3 class="h6 mb16">Subscribers</h3>
       <div class="subscribers-wrapper mb32">
         @for (subscriber of subscribers$ | async; track subscriber.id) {
@@ -26,7 +25,7 @@
       </div>
       <h3 class="h6 mb16">Skills</h3>
       <div class="stack-wrapper mb32">
-        @for (skill of ['1111']; track $index) {
+        @for (skill of profile.stack; track $index) {
           <div class="skill-tag">
             {{ skill }}
           </div>

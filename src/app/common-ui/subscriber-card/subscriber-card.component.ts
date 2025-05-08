@@ -14,6 +14,6 @@ import {NgOptimizedImage} from '@angular/common';
 })
 export class SubscriberCardComponent {
   @Input() profile!: IProfile
-  constructor() {
-  }
+
+
 }

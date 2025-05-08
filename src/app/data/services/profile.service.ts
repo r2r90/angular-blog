@@ -13,8 +13,6 @@ export class ProfileService {
   me = signal<IProfile | null>(null);
 
 
-  constructor() {
-  }
 
   getTestAccounts() {
     return this.http.get<IProfile[]>(`${this.baseApiUrl}account/test_accounts`)
@@ -27,7 +25,7 @@ export class ProfileService {
       )
   }
 
-  getSubscribersShortList(count:number) {
+  getSubscribersShortList(count: number) {
     return this.http.get<IPageble<IProfile>>(`${this.baseApiUrl}account/subscribers/`)
       .pipe(
         map(res => res.items.slice(0, count))
@@ -36,5 +34,9 @@ export class ProfileService {
 
   getUserById(id: string): Observable<IProfile> {
     return this.http.get<IProfile>(`${this.baseApiUrl}account/${id}`)
+  }
+
+  patchProfile(profile: Partial<IProfile>) {
+    return this.http.patch<IProfile>(`${this.baseApiUrl}account/me`, profile)
   }
 }

@@ -25,14 +25,15 @@ import {PostFeedComponent} from './post-feed/post-feed.component';
 export class ProfilePageComponent {
   profileService: ProfileService = inject(ProfileService);
   activatedRoute: ActivatedRoute = inject(ActivatedRoute);
-  subscribers$ = this.profileService.getSubscribersShortList(5)
 
+
+  subscribers$ = this.profileService.getSubscribersShortList(5)
   me$ = toObservable(this.profileService.me)
 
   profile$ = this.activatedRoute.params
     .pipe(
       switchMap(({id}) => {
-        if (id = 'me') return this.me$
+        if (id === 'me') return this.me$
         return this.profileService.getUserById(id)
       })
     )
