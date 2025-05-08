@@ -32,7 +32,7 @@ export class ProfilePageComponent {
   profile$ = this.activatedRoute.params
     .pipe(
       switchMap(({id}) => {
-        if (id === 'me') return this.me$
+        if (id = 'me') return this.me$
         return this.profileService.getUserById(id)
       })
     )
