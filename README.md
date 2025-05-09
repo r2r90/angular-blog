@@ -1,5 +1,14 @@
 # AngularBlog
 
+Angular Blog is a personal project developed to explore and demonstrate key concepts of Angular development. Built using Angular CLI version 19.2.9, the application serves as a foundational blogging platform, showcasing essential features such as component-based architecture, routing, and reactive forms.
+
+Key Features
+	•	Component-Based Architecture: Utilizes Angular’s component-driven structure to create a modular and maintainable codebase.
+	•	Routing: Implements Angular Router for seamless navigation between different views and components.
+	•	Reactive Forms: Employs reactive forms to handle user input and form validations efficiently.
+	•	Responsive Design: Designed with responsiveness in mind to ensure compatibility across various devices and screen sizes.
+	•	Development Tools: Leverages Angular CLI for code scaffolding, building, and serving the application during development.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
 
 ## Development server
