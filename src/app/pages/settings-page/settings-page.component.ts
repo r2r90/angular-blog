@@ -1,14 +1,16 @@
-import {Component, effect, inject} from '@angular/core';
+import {Component, effect, inject, ViewChild} from '@angular/core';
 import {ProfileHeaderComponent} from '../../profile-header/profile-header.component';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ProfileService} from '../../data/services/profile.service';
 import {firstValueFrom} from 'rxjs';
+import {UploadImageComponent} from './upload-image/upload-image.component';
 
 @Component({
   selector: 'app-settings-page',
   imports: [
     ProfileHeaderComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UploadImageComponent
   ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss'
@@ -16,6 +18,8 @@ import {firstValueFrom} from 'rxjs';
 export class SettingsPageComponent {
   formBuilder = inject(FormBuilder);
   profileService = inject(ProfileService);
+  @ViewChild(UploadImageComponent) imageUploader!: UploadImageComponent;
+
 
   form = this.formBuilder.group({
     firstName: ['', Validators.required],
@@ -36,11 +40,17 @@ export class SettingsPageComponent {
     });
   }
 
+
   onSave() {
     this.form.markAllAsTouched();
     this.form.updateValueAndValidity();
 
     if (this.form.invalid) return;
+
+    if (this.imageUploader.avatar) {
+      firstValueFrom(this.profileService.uploadImage(this.imageUploader.avatar))
+    }
+
 
     // @ts-ignore
     firstValueFrom(this.profileService.patchProfile({

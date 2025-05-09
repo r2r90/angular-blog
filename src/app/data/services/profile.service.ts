@@ -11,7 +11,7 @@ export class ProfileService {
   http = inject(HttpClient);
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
   me = signal<IProfile | null>(null);
-
+  filteredProfiles = signal<IProfile[] | null>([]);
 
 
   getTestAccounts() {
@@ -38,5 +38,23 @@ export class ProfileService {
 
   patchProfile(profile: Partial<IProfile>) {
     return this.http.patch<IProfile>(`${this.baseApiUrl}account/me`, profile)
+  }
+
+  uploadImage(file: File) {
+    const formData = new FormData();
+    formData.append('image', file);
+    return this.http.post<IProfile>(`${this.baseApiUrl}account/upload_image`, formData)
+  }
+
+  filterProfiles(params: Record<string, any>) {
+    console.log(params);
+
+    return this.http.get<IPageble<IProfile>>(`${this.baseApiUrl}account/accounts`,
+      {
+        params
+      }
+    ).pipe(
+      tap(res => this.filteredProfiles.set(res.items))
+    )
   }
 }

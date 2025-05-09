@@ -30,6 +30,8 @@
   align-items: center;
   text-decoration: none;
 
+
+  &.active,
   &:hover,
   &:focus-visible {
     background: var(--dark-hover-color);
@@ -66,6 +68,7 @@
 
   .settings-btn {
     align-items: center;
+
     svg {
       width: 13px;
       height: 13px;

@@ -21,10 +21,18 @@
       <span class="tt-form-label__title">About me</span>
       <textarea formControlName="description" class="tt-form-input tt-textarea" rows="4"></textarea>
     </label>
+
+    <label>
+      <span class="tt-form-label__title">
+        Avatar
+      </span>
+      <app-upload-image></app-upload-image>
+    </label>
     <label class="tt-form-label">
       <span class="tt-form-label__title">Stack</span>
       <input type="text" class="tt-form-input" formControlName="stack">
     </label>
+
 
     <div>
       <div>
@@ -34,8 +42,6 @@
       </div>
     </div>
   </div>
-
-
 
 
 </form>
